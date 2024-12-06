@@ -22,14 +22,29 @@ internal class Product
     }
 
     //There is no need to await here, we can simply delegate the resulting task to the caller method.
-    internal Task<decimal> GetPriceInCurrency(Currency currency)
+    internal Task<decimal> GetPriceInCurrencyAsync(Currency currency)
     {
         return conversionService.ConvertCurrencyAsync(Price, this.Currency, currency);
     }
 
     //Alternatively, a delegate could also be used:
-    internal decimal GetPriceInCurrency(Currency currency, Func<Currency, Currency, decimal, decimal> currencyConverter)
+    internal Task<decimal> GetPriceInCurrencyAsync(Currency currency, Func<Currency, Currency, decimal, Task<decimal>> currencyConverter)
     {
         return currencyConverter(this.Currency, currency, Price);
+    }
+
+    //Even a custom/named delegate could be used for clarity:
+    internal delegate Task<decimal> CurrencyConverter (decimal price, Currency from, Currency to);
+    internal Task<decimal> GetPriceInCurrencyAsync(Currency currency, CurrencyConverter currencyConverter)
+    {
+        return currencyConverter(Price, this.Currency, currency);
+    }
+
+    //Another approach is to use a static utility method. However this would make testing harder for more complex types.
+    //This method is also not as flexible as the other more functional or object oriented approaches since you can't swap out
+    //the implementations as easily.
+    internal Task<decimal> getPriceInCurrencyAsync(Currency currency)
+    {
+        return CurrencyUtils.ConvertCurrencyAsync(Price, this.Currency, currency);
     }
 }
