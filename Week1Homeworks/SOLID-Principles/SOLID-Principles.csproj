@@ -9,10 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="LSP\" />
-    <Folder Include="ISP\" />
     <Folder Include="DIP\" />
-    <Folder Include="OCP\Good\" />
+    <Folder Include="ISP\" />
+    <Folder Include="LSP\Good\" />
   </ItemGroup>
 
   <ItemGroup>
