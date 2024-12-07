@@ -12,7 +12,11 @@
     <Folder Include="LSP\" />
     <Folder Include="ISP\" />
     <Folder Include="DIP\" />
-    <Folder Include="OCP\" />
+    <Folder Include="OCP\Good\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
   </ItemGroup>
 
 </Project>

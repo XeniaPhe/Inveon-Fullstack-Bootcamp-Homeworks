@@ -27,11 +27,11 @@ namespace Xenia.InveonBootcamp.Homeworks.Week1.SolidPrinciples.SRP.Bad;
  *          2-Currency conversion logic might change
  *          3-Currency rate API might change
  *      
- *      Ideally, there should be a facade class that is dedicated to handling the passing of the requests and parsing of the responses
- *      of this external API. This class would provide a common and simple interface to retrieve conversion rates between currencies.
- *      Since this class'es sole responsibility is to handle the communication between the program and the external API, it would be
- *      fine even when the API is changed. Because this facade class isolates the external API from the rest of the system,
- *      changes in the API would only require modifications to the facade class, leaving the rest of the application unaffected.
+ * Ideally, there should be a facade class that is dedicated to handling the passing of the requests and parsing of the responses
+ * of this external API. This class would provide a common and simple interface to retrieve conversion rates between currencies.
+ * Since this class'es sole responsibility is to handle the communication between the program and the external API, it would be
+ * fine even when the API is changed. Because this facade class isolates the external API from the rest of the system,
+ * changes in the API would only require modifications to the facade class, leaving the rest of the application unaffected.
  */
 
 internal class Product
